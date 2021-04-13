@@ -26,7 +26,6 @@ public class Leejongwoong {
         double tv = 0;
 ```
 `temval`의 최대값을 구하고 `a`의 무게와 가치를 비교하여 내림차순으로 정렬한다.
-
 ---
 
 ```Java
@@ -50,7 +49,6 @@ public class Leejongwoong {
 `tv`의 값은 `w`의 `v(물건들의 가치)`이다.
 > `c - wt`의 값이 0보다 작다면(물건들의 무게가 배낭에 넣을 수 있는 무게를 초과한다면) 초과하는 물건들 중에서
 > `c - wt`가 0가 되도록 가치가 높은 물건의 물건의 무게와 가치를 비례하여 줄여 `tv`에 저장해준 뒤 리턴해준다.
-
 ---
 
 ```Java
@@ -73,7 +71,6 @@ public class Leejongwoong {
 ```
 >`temval`의 함수 `a = new Double((double)v / (double)w);`를 통해 `w(무게)`와 `v(가치)`를 비교하여  `public class Leejongwoong Comparator`정렬에서 내림차순으로 정렬을 한다.
 > `main` 함수에서 `w(물건들 무게)`와 `v(물건들 가치)`, `c(배낭의 들어갈 수 있는 최대 무게)`의 값을 정하였다.
-
 ---
 
 ```Java
@@ -86,5 +83,4 @@ public class Leejongwoong {
 ```
 >`woong`함수를 호출하여 `maxv`에 저장 후 `print`해준다.
 >이 때 `woong`함수는 `Comparator a`함수에 의해서 내림차순으로 된 물건들을 `for`문으로 인해 가치가 가장 큰 값을 먼저 배낭에 넣어준 뒤 나머지 무게에 대해 무게와 가치를 비교하여 가장 높은 가치의 물건을 `c` 값 50에 맞춰서 넣어준다.
-
 ---
