@@ -1,9 +1,21 @@
-import java.io.IOException;
+#greed2
+
+##팀원: 강현규, 류연수, 이종웅
+
+---
+
+#코드설명  
+
 import java.util.Scanner;
+
+Scanner를 사용하기 위해서 java.util. 패키지에서 불러온다.
+
+---
+
 ```javascript
 public class FractionalKnapSack
 {
-    public static void main(String args[]) throws IOException
+    public static void main(String args[])
     {
         Scanner sc = new Scanner(System.in);
         int i, w, j=0, m, n;
@@ -19,6 +31,10 @@ public class FractionalKnapSack
             array[1][i]=sc.nextInt();
         System.out.print("배낭에 담을 수 있는 최대 무게를 입력:");
         w=sc.nextInt();
+        ```
+        
+        
+        ```javascript
         m=w;
         while(m>=0)
         {
