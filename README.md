@@ -25,7 +25,7 @@ public class Leejongwoong {
                 return o2.a.compareTo(o1.a); }});
         double tv = 0;
 ```
-`temval`의 최대값을 구하고 `a`의 무게와 가치를 비교하여 내림차순으로 정렬한다.
+>`temval`의 최대값을 구하고 `a`의 무게와 가치를 비교하여 내림차순으로 정렬한다.  
 ---
 
 ```Java
