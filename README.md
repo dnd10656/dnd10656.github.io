@@ -9,9 +9,11 @@
 ### 코드설명  
 
 ```import java.util.Arrays;
-import java.util.Comparator;```
--> 배열을 다루기 위해 `util.java.` 패키지에서 `Arrays` 클래스를 불러온다.
--> Arrays.sort() 메소드의 기준으로 삽입해줄 정렬 기준을 가진 `Comparator` 클래스를 불러온다.
+import java.util.Comparator;
+```
+> 배열을 다루기 위해 `util.java.` 패키지에서 `Arrays` 클래스를 불러온다.
+> Arrays.sort() 메소드의 기준으로 삽입해줄 정렬 기준을 가진 `Comparator` 클래스를 불러온다.
+
 ---
 
 ```Java
