@@ -8,55 +8,58 @@
   
 ### 코드설명  
 
-```import java.util.Scanner;```
-->Scanner를 사용하기 위해서 java.util. 패키지에서 불러온다.
-
+```import java.util.Arrays;
+import java.util.Comparator;```
+-> 배열을 다루기 위해 `util.java.` 패키지에서 `Arrays` 클래스를 불러온다.
+-> Arrays.sort() 메소드의 기준으로 삽입해줄 정렬 기준을 가진 `Comparator` 클래스를 불러온다.
 ---
 
 ```Java
-public class FractionalKnapSack
-{
-    public static void main(String args[])
-    {
-        Scanner sc = new Scanner(System.in);
-        int i, w, j=0, m, n;
-        float v=0,max;
-        int array[][]=new int[20][20];
-        System.out.print("물건들의 개수를 입력:");
-        n=sc.nextInt();
-        System.out.print("물건들의 무게를 입력:");
-        for(i=0;i<n;i++)
-            array[0][i]=sc.nextInt();
-        System.out.print("물건들의 가치를 입력:");
-        for(i=0;i<n;i++)
-            array[1][i]=sc.nextInt();
-        System.out.print("배낭에 담을 수 있는 최대 무게를 입력:");
-        w=sc.nextInt();
-```
-Scanner를 이용하여 각 물건의 단위 무게와 가치를 사용자가 지정할 수 있도록 하였습니다.
+public class FractionalKnapSack { // 최대값을 구하는 함수
+    private static double getMaxValue(int[] wt, int[] val, int c) {
+        ItemValue[] iVal = new ItemValue[wt.length];
+        for (int i = 0; i < wt.length; i++) {
+            iVal[i] = new ItemValue(wt[i], val[i], i); }
+        Arrays.sort(iVal, new Comparator<ItemValue>() {       // 값별로 항목 정렬
+            public int compare(ItemValue o1, ItemValue o2) {
+                return o2.cost.compareTo(o1.cost); }});
+        double totalValue = 0;
 
----
-        
-```Java
-        m=w;
-        while(m>=0)
-        {
-            max=0;
-            for(i=0;i<n;i++) {
-                if(((float)array[1][i])/((float)array[0][i])>max) {
-                    max=((float)array[1][i])/((float)array[0][i]);
-                    j=i; } }
-            if(array[0][j]>m) {
-                System.out.println("배낭에 넣을 "+  (j+1) + " 번 물건의 무게는 " +m);
-                v+=m*max;
-                m=-1; }
+        for (ItemValue i : iVal) {
+            int w = (int)i.wt;
+            int v = (int)i.val;
+            if (c - w >= 0) { // 이 중량은 다음과 같이 선택할 수 있다.
+                c = c - w;
+                totalValue += v; }
             else {
-                System.out.println("배낭에 넣을 "+ (j+1) + " 번 물건의 무게는 " + array[0][j]);
-                m-=array[0][j];
-                v+=(float)array[1][j];
-                array[1][j]=0; } }
-        System.out.println("배낭에 넣은 물건들의 총 가치는: " + v);
-        sc.close();
+                double fraction = ((double)c / (double)w); // 전체를 선택할 수 없다.
+                totalValue += (v * fraction);
+                c = (int)(c - (w * fraction));
+                break; }
+        }
+        return totalValue;
+    }
+
+    static class ItemValue {    // 항목 값 클래스
+        Double cost;
+        double wt, val, i2;
+
+        public ItemValue(int wt, int val, int i2)// 항목item 값 함수
+        {
+            this.wt = wt;
+            this.val = val;
+            this.i2 = i2;
+            cost = new Double((double)val / (double)wt);
+        }
+    }
+    public static void main(String[] args) { // 운전자 코드
+        int[] wt = { 10, 40, 20, 30 };
+        int[] val = { 60, 40, 100, 120 };
+        int c= 50;
+
+        double maxValue = getMaxValue(wt, val, c);       // 함수 호출
+        System.out.println("배낭에 담을 수 있는 최대 물건의 최대 가치 = "
+                + maxValue);
     }
 }
-```
+
