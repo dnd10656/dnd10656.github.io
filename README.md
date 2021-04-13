@@ -1,20 +1,19 @@
 # greed2
   
   
-##### 팀원: 강현규, 류연수, 이종웅
+#### 팀원: 강현규, 류연수, 이종웅
   
 ---
   
   
 ### 코드설명  
 
-import java.util.Scanner;
-
-Scanner를 사용하기 위해서 java.util. 패키지에서 불러온다.
+```import java.util.Scanner;```
+->Scanner를 사용하기 위해서 java.util. 패키지에서 불러온다.
 
 ---
 
-```javascript
+```Java
 public class FractionalKnapSack
 {
     public static void main(String args[])
@@ -36,8 +35,9 @@ public class FractionalKnapSack
 ```
 Scanner를 이용하여 각 물건의 단위 무게와 가치를 사용자가 지정할 수 있도록 하였습니다.
 
+---
         
-```javascript
+```Java
         m=w;
         while(m>=0)
         {
