@@ -33,10 +33,11 @@ public class FractionalKnapSack
             array[1][i]=sc.nextInt();
         System.out.print("배낭에 담을 수 있는 최대 무게를 입력:");
         w=sc.nextInt();
-        ```
+```
+Scanner를 이용하여 각 물건의 단위 무게와 가치를 사용자가 지정할 수 있도록 하였습니다.
+
         
-        
-        ```javascript
+```javascript
         m=w;
         while(m>=0)
         {
