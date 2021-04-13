@@ -11,57 +11,74 @@
 ```import java.util.Arrays;
 import java.util.Comparator;
 ```
-> 배열을 다루기 위해 `util.java.` 패키지에서 `Arrays` 클래스를 불러온다.
-> Arrays.sort() 메소드의 기준으로 삽입해줄 정렬 기준을 가진 `Comparator` 클래스를 불러온다.
+> 배열을 다루기 위해 `util.java.` 패키지에서 `Arrays` 클래스를 불러온다.  
+> Arrays.sort() 메소드의 기준으로 삽입해줄 정렬 기준을 가진 `Comparator` 클래스도 불러온다.
 
 ---
 
 ```Java
-public class FractionalKnapSack { // 최대값을 구하는 함수
-    private static double getMaxValue(int[] wt, int[] val, int c) {
-        ItemValue[] iVal = new ItemValue[wt.length];
-        for (int i = 0; i < wt.length; i++) {
-            iVal[i] = new ItemValue(wt[i], val[i], i); }
-        Arrays.sort(iVal, new Comparator<ItemValue>() {       // 값별로 항목 정렬
-            public int compare(ItemValue o1, ItemValue o2) {
-                return o2.cost.compareTo(o1.cost); }});
-        double totalValue = 0;
+public class Leejongwoong {
+    public static double woong(int[] w, int[] v, int c) {
+        temval[] V = new temval[w.length];
+        for (int i = 0; i < w.length; i++) {
+            V[i] = new temval(w[i], v[i], i); }
+        Arrays.sort(V, new Comparator<temval>() {
+            public int compare(temval o1, temval o2) {
+                return o2.a.compareTo(o1.a); }});
+        double tv = 0;
+```
+`temval`의 최대값을 구하고 `a`의 무게와 가치를 비교하여 내림차순으로 정렬한다.
 
-        for (ItemValue i : iVal) {
-            int w = (int)i.wt;
-            int v = (int)i.val;
-            if (c - w >= 0) { // 이 중량은 다음과 같이 선택할 수 있다.
-                c = c - w;
-                totalValue += v; }
-            else {
-                double fraction = ((double)c / (double)w); // 전체를 선택할 수 없다.
-                totalValue += (v * fraction);
-                c = (int)(c - (w * fraction));
+```Java
+        for (temval i : V) {
+            int wt = (int) i.w;
+            int vl = (int) i.v;
+            if (c - wt >= 0) {
+                c = c - wt;
+                tv += vl;
+            } else {
+                double f = ((double) c / (double) wt);
+                tv += (vl * f);
+                c = (int) (c - (wt * f));
                 break; }
         }
-        return totalValue;
+        return tv;
     }
+```
+>` int[] w = { 10, 40, 20, 30 }; int[] v = { 60, 40, 100, 120 };`에서의 최대 가치 `w 30, v 120`을 먼저 배낭에 넣은 뒤 무게와 가치를 비교하여 무게가 초과된다면 무게와 가치를 동시에 줄여 `c`의 값인 50에 맞춰 배낭에 넣어준다.  
+>`c(배낭 안에 들어갈 수 있는 최대 무게)`의 값에서 `wt(물건들의 무게)`뺀 값이 0보다 크거나 같으면(0이라면) `c = c - wt;`이며,
+`tv`의 값은 `w`의 `v(물건들의 가치)`이다.
+> `c - wt`의 값이 0보다 작다면(물건들의 무게가 배낭에 넣을 수 있는 무게를 초과한다면) 초과하는 물건들 중에서
+> `c - wt`가 0가 되도록 가치가 높은 물건의 물건의 무게와 가치를 비례하여 줄여 `tv`에 저장해준 뒤 리턴해준다.
 
-    static class ItemValue {    // 항목 값 클래스
-        Double cost;
-        double wt, val, i2;
+```Java
+   static class temval {
+        Double a;
+        double w, v, i2;
 
-        public ItemValue(int wt, int val, int i2)// 항목item 값 함수
-        {
-            this.wt = wt;
-            this.val = val;
+        public temval(int w, int v, int i2) {
+            this.w = w;
+            this.v = v;
             this.i2 = i2;
-            cost = new Double((double)val / (double)wt);
+            a = new Double((double) v / (double) w);
+
         }
     }
-    public static void main(String[] args) { // 운전자 코드
-        int[] wt = { 10, 40, 20, 30 };
-        int[] val = { 60, 40, 100, 120 };
-        int c= 50;
-
-        double maxValue = getMaxValue(wt, val, c);       // 함수 호출
-        System.out.println("배낭에 담을 수 있는 최대 물건의 최대 가치 = "
+    public static void main(String[] args) {
+        int[] w = {10, 40, 20, 30};
+        int[] v = {60, 40, 100, 120};
+        int c = 50;
+```
+>`temval`의 함수 `a = new Double((double)v / (double)w);`를 통해 `w(무게)`와 `v(가치)`를 비교하여  `public class Leejongwoong Comparator`정렬에서 내림차순으로 정렬을 한다.
+> `main` 함수에서 `w(물건들 무게)`와 `v(물건들 가치)`, `c(배낭의 들어갈 수 있는 최대 무게)`의 값을 정하였다.
+```Java
+        double maxValue = woong(w, v, c);
+        System.out.print("배낭에 담을 수 있는 최대 물건의 최대 가치 = "
                 + maxValue);
     }
 }
+
+```
+>`woong`함수를 호출하여 `maxv`에 저장 후 `print`해준다.
+>이 때 `woong`함수는 `Comparator a`함수에 의해서 내림차순으로 된 물건들을 `for`문으로 인해 가치가 가장 큰 값을 먼저 배낭에 넣어준 뒤 나머지 무게에 대해 무게와 가치를 비교하여 가장 높은 가치의 물건을 `c` 값 50에 맞춰서 넣어준다.
 
