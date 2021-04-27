@@ -4,7 +4,7 @@
 ## 이종웅
 
 ---
-### Strassen Alogorithm 
+### Strassen Alogorithm 계산
 
 `아래 A, B 행렬과 두 행의 곱의 결과 C가 있다고 했을 때 (A, B는 정사각행렬)`
 ![a=](https://wikimedia.org/api/rest_v1/media/math/render/svg/41c6337190684aff7b69f124226d6e62d79ebca5)  
