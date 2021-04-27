@@ -34,7 +34,7 @@
 ![c21](https://wikimedia.org/api/rest_v1/media/math/render/svg/5853fa11f016df7eee4eb2a7ceb6137d3b3296de)  
 ![c22](https://wikimedia.org/api/rest_v1/media/math/render/svg/b7d7d4ee9e67e0c23f1a522787d4829072542dbb)  
 ---
-### Strassem Alogorithm java code
+### Strasse Alogorithm java code
 
 ```java
 import java.util.Scanner;
