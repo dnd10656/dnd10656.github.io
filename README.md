@@ -11,17 +11,17 @@
 
 
 
-아래 A, B 행렬과 두 행의 곱의 결과 C가 있다고 했을 때
+아래 A, B 행렬과 두 행의 곱의 결과 C가 있다고 했을 때  
 ![a=](https://wikimedia.org/api/rest_v1/media/math/render/svg/41c6337190684aff7b69f124226d6e62d79ebca5)  
 
-행렬의 곱은 다음과 같으며, 총 8번의 곱셈과 4번의 덧셈으로 연산된다.
+행렬의 곱은 다음과 같으며, 총 8번의 곱셈과 4번의 덧셈으로 연산된다.  
 ![C11](https://wikimedia.org/api/rest_v1/media/math/render/svg/8d91fa79d27697a5c6551698c1a83a3d5837c57b)  
 ![C12](https://wikimedia.org/api/rest_v1/media/math/render/svg/a08bea24eec9422cda82e6e04af1d96fc6822038)  
 ![C21](https://wikimedia.org/api/rest_v1/media/math/render/svg/7adffe97db091ce8ba231352b3721bbe261985ca)  
 ![C22](https://wikimedia.org/api/rest_v1/media/math/render/svg/8b40ed74cf54465d8e54d09b8492e50689928313)  
 
-Strassen에서 행렬의 곱셈을 더하기 연산으로 풀어 각 원소를 구할 수 있는 M이라는 연산 행렬로 표현한다.
-이러한 M행렬은 7번의 곱셈과 10번의 덧셈 연산으로 나타낼 수 있으며 아래와 같이 표현한다.
+Strassen에서 행렬의 곱셈을 더하기 연산으로 풀어 각 원소를 구할 수 있는 M이라는 연산 행렬로 표현한다.  
+이러한 M행렬은 7번의 곱셈과 10번의 덧셈 연산으로 나타낼 수 있으며 아래와 같이 표현한다.  
 ![M1](https://wikimedia.org/api/rest_v1/media/math/render/svg/1e9e6268d824de7ad5010a32a1921452b264f7ee)  
 ![M2](https://wikimedia.org/api/rest_v1/media/math/render/svg/0d40beeba8019e378fa0ed4b6e549c44a140a9ec)  
 ![M3](https://wikimedia.org/api/rest_v1/media/math/render/svg/45e8e9679d33f2c66e24bd812e1e554f95bb1571)  
@@ -29,8 +29,8 @@ Strassen에서 행렬의 곱셈을 더하기 연산으로 풀어 각 원소를 �
 ![M5](https://wikimedia.org/api/rest_v1/media/math/render/svg/715adfa757b74b3ad6b4eea545c24762e4079161)  
 ![M6](https://wikimedia.org/api/rest_v1/media/math/render/svg/30107b9c9c99494bf75f23e84b505e5921cee46e)  
 ![M7](https://wikimedia.org/api/rest_v1/media/math/render/svg/9e93ef1c265be8be96209dde36230d56e139fc72)  
-
-최종 C행렬은 M행렬의 덧셈 연산으로 이루어져 있으며 각 원소에 해당하는 방법이 있다.
+ 
+최종 C행렬은 M행렬의 덧셈 연산으로 이루어져 있으며 각 원소에 해당하는 방법이 있다.  
 ![c11](https://wikimedia.org/api/rest_v1/media/math/render/svg/26875b8ca1815e2c322c798faeecabe1d7836798)  
 ![c12](https://wikimedia.org/api/rest_v1/media/math/render/svg/e71779a8ecc64f3e1268485cf389a05cdd3e6bf8)  
 ![c21](https://wikimedia.org/api/rest_v1/media/math/render/svg/5853fa11f016df7eee4eb2a7ceb6137d3b3296de)  
