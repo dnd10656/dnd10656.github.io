@@ -33,4 +33,102 @@ Strassen에서 행렬의 곱셈을 더하기 연산으로 풀어 각 원소를 �
 ![c21](https://wikimedia.org/api/rest_v1/media/math/render/svg/5853fa11f016df7eee4eb2a7ceb6137d3b3296de)  
 ![c22](https://wikimedia.org/api/rest_v1/media/math/render/svg/b7d7d4ee9e67e0c23f1a522787d4829072542dbb)  
 
-참고자료 출처: https://ko.wikipedia.org/wiki/%EC%8A%88%ED%8A%B8%EB%9D%BC%EC%84%BC_%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
+### Strassem Alogorithm java code
+
+```java
+import java.util.Scanner;
+```
+A, B 행렬을 사용자가 입력하기 위해서 import를 통해 java.util 패키지에 포함되어 있는 Scanner을 호출했습니다.  
+
+```java
+public void strassen (int n, int[][] A, int[][] B, int[][] C){
+        int i,j;
+        int M1[][] = new int[n / 2][n / 2];
+        int M2[][] = new int[n / 2][n / 2];
+        int M3[][] = new int[n / 2][n / 2];
+        int M4[][] = new int[n / 2][n / 2];
+        int M5[][] = new int[n / 2][n / 2];
+        int M6[][] = new int[n / 2][n / 2];
+        int M7[][] = new int[n / 2][n / 2];
+        int TempA[][] = new int[n / 2][n / 2];
+        int TempB[][] = new int[n / 2][n / 2];
+        if (n <= 2) {                        // 2 × 2 행렬이 되면 결과 행렬에 계산하여 넣음
+            C[0][0] = A[0][0] * B[0][0] + A[0][1] * B[1][0];
+            C[0][1] = A[0][0] * B[0][1] + A[0][1] * B[1][1];
+            C[1][0] = A[1][0] * B[0][0] + A[1][1] * B[1][0];
+            C[1][1] = A[1][0] * B[0][1] + A[1][1] * B[1][1];
+        } else {            // M1을 계산한후 strassen 메소드를 재귀 호출
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempA[i][j] = A[i][j] + A[i + n / 2][j + n / 2];
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempB[i][j] = B[i][j] + B[i + n / 2][j + n / 2];
+            strassen(n / 2, TempA, TempB, M1);     // M2 계산 후 strassen 메소드를 재귀호출
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempA[i][j] = A[i + n / 2][j] + A[i + n / 2][j + n / 2];
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempB[i][j] = B[i][j];
+            strassen(n / 2, TempA, TempB, M2);
+            // M3 계산후 strassen 메소드를 재귀 호출
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempA[i][j] = A[i][j];
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempB[i][j] = B[i][j + n / 2] - B[i + n / 2][j + n / 2];
+            strassen(n / 2, TempA, TempB, M3);
+            // M4 계산후 strassen 메소드를 재귀 호출
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempA[i][j] = A[i + n / 2][j + n / 2];
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempB[i][j] = B[i + n / 2][j] - B[i][j];
+            strassen(n / 2, TempA, TempB, M4);
+            // M5 계산후 strassen 메소드를 재귀 호출
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempA[i][j] = A[i][j] + A[i][j + n / 2];
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempB[i][j] = B[i + n / 2][j + n / 2];
+            strassen(n / 2, TempA, TempB, M5);
+            // M6 계산 후 strassen 메소드를 재귀호출
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempA[i][j] = A[i + n / 2][j] - A[i][j];
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempB[i][j] = B[i][j] + B[i][j + n / 2];
+            strassen(n / 2, TempA, TempB, M6);
+            // M7 계산 후 strassen 메소드를 재귀호출
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempA[i][j] = A[i][j + n / 2] - A[i + n / 2][j + n / 2];
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    TempB[i][j] = B[i + n / 2][j] + B[i + n / 2][j + n / 2];
+            strassen(n / 2, TempA, TempB, M7);
+            //C11 계산
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    C[i][j] = M1[i][j] + M4[i][j] - M5[i][j] + M7[i][j];
+            //C12 계산
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    C[i][j + n / 2] = M3[i][j] + M5[i][j];
+            // C21 계산
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    C[i + n / 2][j] = M2[i][j] + M4[i][j];
+            // C22 계산
+            for (i = 0; i < n / 2; i++)
+                for (j = 0; j < n / 2; j++)
+                    C[i + n / 2][j + n / 2] = M1[i][j] + M3[i][j] - M2[i][j] + M6[i][j];
+        }
+    }```  
+    
+   Strassen 행렬 계산법에 따라 차례대로 계산하였습니다.
