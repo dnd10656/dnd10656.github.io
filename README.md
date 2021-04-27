@@ -39,7 +39,7 @@
 ```java
 import java.util.Scanner;
 ```
-**A, B 행렬을 사용자가 입력하기 위해서 import를 통해 java.util 패키지에 포함되어 있는 Scanner을 호출했습니다.  
+** A, B 행렬을 사용자가 입력하기 위해서 import를 통해 java.util 패키지에 포함되어 있는 Scanner을 호출했습니다.  
 
 ```java
 public class Strassen {
