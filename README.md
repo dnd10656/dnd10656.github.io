@@ -133,7 +133,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
         }
     }
  ```  
-`Strassen 행렬 계산법에 따라 차례대로 계산하였습니다.`
+`Strassen 행렬 계산  따라 차례대로 계산하였습니다.`
 
 ```java
     public static void Strassen_init (int n, int[][] A, int[][] B, int[][] C) {
