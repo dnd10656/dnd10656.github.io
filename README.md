@@ -141,7 +141,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
             for(int j=0 ; j<n ; j++){
                 A[i][j] = (int)(Math.random() * 10+1);       // 행렬 A에 값을 할당
                 B[i][j] = (int)(Math.random() * 10+1);       // 행렬 B에 값을 할당
-                C[i][j] = 0;					                            // 행렬 C에 값을 할당
+                C[i][j] = 0;					                       // 행렬 C에 값을 할당
             }
         }
     }  
@@ -178,7 +178,8 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
     }
 }
 ```  
-`성능분석을 위해 long start = System.currentTimeMillis(); long end = System.currentTimeMillis(); System.out.println("수행시간 : "+ (end-start)+ "ms"); 을 사용하였습니다.`
+`성능분석을 위해 long start = System.currentTimeMillis(); long end = System.currentTimeMillis();  
+System.out.println("수행시간 : "+ (end-start)+ "ms"); 을 사용하였습니다.`
 
 
 
