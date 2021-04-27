@@ -9,14 +9,14 @@
 `아래 A, B 행렬과 두 행의 곱의 결과 C가 있다고 했을 때 (A, B는 정사각행렬)`
 ![a=](https://wikimedia.org/api/rest_v1/media/math/render/svg/41c6337190684aff7b69f124226d6e62d79ebca5)  
 
-`행렬의 곱은 다음과 같으며, 총 8번의 곱셈과 4번의 덧셈으로 연산한다.` 
+`행렬의 곱은 다음과 같으며, 총 8번의 곱셈과 4번의 덧셈으로 연산한다.`  
 ![C11](https://wikimedia.org/api/rest_v1/media/math/render/svg/8d91fa79d27697a5c6551698c1a83a3d5837c57b)  
 ![C12](https://wikimedia.org/api/rest_v1/media/math/render/svg/a08bea24eec9422cda82e6e04af1d96fc6822038)  
 ![C21](https://wikimedia.org/api/rest_v1/media/math/render/svg/7adffe97db091ce8ba231352b3721bbe261985ca)  
 ![C22](https://wikimedia.org/api/rest_v1/media/math/render/svg/8b40ed74cf54465d8e54d09b8492e50689928313)  
 
-**Strassen에서 행렬의 곱셈을 더하기 연산으로 풀어 각 원소를 구할 수 있는 M이라는 연산 행렬로 표현한다.  
-이러한 M행렬은 7번의 곱셈과 10번의 덧셈 연산으로 나타낼 수 있으며 아래와 같이 표현한다.  
+`Strassen에서 행렬의 곱셈을 더하기 연산으로 풀어 각 원소를 구할 수 있는 M이라는 연산 행렬로 표현한다.  
+이러한 M행렬은 7번의 곱셈과 10번의 덧셈 연산으로 나타낼 수 있으며 아래와 같이 표현한다.`  
 ![M1](https://wikimedia.org/api/rest_v1/media/math/render/svg/1e9e6268d824de7ad5010a32a1921452b264f7ee)  
 ![M2](https://wikimedia.org/api/rest_v1/media/math/render/svg/0d40beeba8019e378fa0ed4b6e549c44a140a9ec)  
 ![M3](https://wikimedia.org/api/rest_v1/media/math/render/svg/45e8e9679d33f2c66e24bd812e1e554f95bb1571)  
@@ -25,9 +25,9 @@
 ![M6](https://wikimedia.org/api/rest_v1/media/math/render/svg/30107b9c9c99494bf75f23e84b505e5921cee46e)  
 ![M7](https://wikimedia.org/api/rest_v1/media/math/render/svg/9e93ef1c265be8be96209dde36230d56e139fc72)  
   
-**최종 C행렬은 M행렬의 덧셈 연산으로 이루어져 있으며 전체 곱셈을 일곱 번의 곱셈과 18번의 덧셈으로 처리할 수 있다.  
+`최종 C행렬은 M행렬의 덧셈 연산으로 이루어져 있으며 전체 곱셈을 일곱 번의 곱셈과 18번의 덧셈으로 처리할 수 있다.  
 큰 행렬에 대해서는 행렬의 곱셈이 덧셈보다 더 많은 시간을 필요로 하기 때문에 덧셈을 더 하는 대신 곱셈을 덜 하는 것이  
-전체적으로 효율적이다.  
+전체적으로 효율적이다.`  
 
 ![c11](https://wikimedia.org/api/rest_v1/media/math/render/svg/26875b8ca1815e2c322c798faeecabe1d7836798)  
 ![c12](https://wikimedia.org/api/rest_v1/media/math/render/svg/e71779a8ecc64f3e1268485cf389a05cdd3e6bf8)  
@@ -39,7 +39,7 @@
 ```java
 import java.util.Scanner;
 ```
-** A, B 행렬을 사용자가 입력하기 위해서 import를 통해 java.util 패키지에 포함되어 있는 Scanner을 호출했습니다.  
+`A, B 행렬을 사용자가 입력하기 위해서 import를 통해 java.util 패키지에 포함되어 있는 Scanner을 호출했습니다.`  
 
 ```java
 public class Strassen {
@@ -133,7 +133,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
         }
     }
  ```  
-**Strassen 행렬 계산법에 따라 차례대로 계산하였습니다.
+`Strassen 행렬 계산법에 따라 차례대로 계산하였습니다.`
 
 ```java
     public static void Strassen_init (int n, int[][] A, int[][] B, int[][] C) {
@@ -147,7 +147,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
     }  
   ```  
     
-**행렬 초기화 구문입니다. 원래대로라면 이와같이 A와 B를 Math.random() 함수로 랜덤하게 지정하고 싶었습니다.  
+`행렬 초기화 구문입니다. 원래대로라면 이와같이 A와 B를 Math.random() 함수로 랜덤하게 지정하고 싶었습니다.`  
 
 ```java
  public static void main(String args[]) {
@@ -178,9 +178,9 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
     }
 }
 ```  
-**성능분석을 위해 long start = System.currentTimeMillis(); long end = System.currentTimeMillis(); System.out.println("수행시간 : "+ (end-start)+ "ms"); 을 사용하였습니다.
+`성능분석을 위해 long start = System.currentTimeMillis(); long end = System.currentTimeMillis(); System.out.println("수행시간 : "+ (end-start)+ "ms"); 을 사용하였습니다.`
 
 
 
-**원래 목적은 A, B를 랜덤함수로 호출하여 출력하는 것이었는데 코드 오류가 너무 발생하여 Scanner을 이용하여 A, B를 출력하게 되었습니다.
-여전히 코드 오류가 있어 오류가 발생하지만, 정말 많이 노력했습니다...
+`원래 목적은 A, B를 랜덤함수로 호출하여 출력하는 것이었는데 코드 오류가 너무 발생하여 Scanner을 이용하여 A, B를 출력하게 되었습니다.
+여전히 int[][] C = s.strassen(A, B) 구문에서 오류가 발생하지만, 정말 많이 노력했습니다.`  
