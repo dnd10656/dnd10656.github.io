@@ -41,6 +41,7 @@ import java.util.Scanner;
 A, B 행렬을 사용자가 입력하기 위해서 import를 통해 java.util 패키지에 포함되어 있는 Scanner을 호출했습니다.  
 
 ```java
+public class Strassen {
 public void strassen (int n, int[][] A, int[][] B, int[][] C){
         int i,j;
         int M1[][] = new int[n / 2][n / 2];
@@ -52,19 +53,19 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
         int M7[][] = new int[n / 2][n / 2];
         int TempA[][] = new int[n / 2][n / 2];
         int TempB[][] = new int[n / 2][n / 2];
-        if (n <= 2) {                        // 2 × 2 행렬이 되면 결과 행렬에 계산하여 넣음
+        if (n <= 2) {                        // 2 × 2 행렬이 되면 결과 행렬에 계산하여 넣는다.
             C[0][0] = A[0][0] * B[0][0] + A[0][1] * B[1][0];
             C[0][1] = A[0][0] * B[0][1] + A[0][1] * B[1][1];
             C[1][0] = A[1][0] * B[0][0] + A[1][1] * B[1][0];
             C[1][1] = A[1][0] * B[0][1] + A[1][1] * B[1][1];
-        } else {            // M1을 계산한후 strassen 메소드를 재귀 호출
+        } else {            // M1을 계산한후 strassen 메소드를 호출
             for (i = 0; i < n / 2; i++)
                 for (j = 0; j < n / 2; j++)
                     TempA[i][j] = A[i][j] + A[i + n / 2][j + n / 2];
             for (i = 0; i < n / 2; i++)
                 for (j = 0; j < n / 2; j++)
                     TempB[i][j] = B[i][j] + B[i + n / 2][j + n / 2];
-            strassen(n / 2, TempA, TempB, M1);     // M2 계산 후 strassen 메소드를 재귀호출
+            strassen(n / 2, TempA, TempB, M1);     // M2 계산 후 strassen 메소드를 호출
             for (i = 0; i < n / 2; i++)
                 for (j = 0; j < n / 2; j++)
                     TempA[i][j] = A[i + n / 2][j] + A[i + n / 2][j + n / 2];
@@ -72,7 +73,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
                 for (j = 0; j < n / 2; j++)
                     TempB[i][j] = B[i][j];
             strassen(n / 2, TempA, TempB, M2);
-            // M3 계산후 strassen 메소드를 재귀 호출
+            // M3 계산후 strassen 메소드를 호출
             for (i = 0; i < n / 2; i++)
                 for (j = 0; j < n / 2; j++)
                     TempA[i][j] = A[i][j];
@@ -80,7 +81,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
                 for (j = 0; j < n / 2; j++)
                     TempB[i][j] = B[i][j + n / 2] - B[i + n / 2][j + n / 2];
             strassen(n / 2, TempA, TempB, M3);
-            // M4 계산후 strassen 메소드를 재귀 호출
+            // M4 계산후 strassen 메소드를 호출
             for (i = 0; i < n / 2; i++)
                 for (j = 0; j < n / 2; j++)
                     TempA[i][j] = A[i + n / 2][j + n / 2];
@@ -88,7 +89,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
                 for (j = 0; j < n / 2; j++)
                     TempB[i][j] = B[i + n / 2][j] - B[i][j];
             strassen(n / 2, TempA, TempB, M4);
-            // M5 계산후 strassen 메소드를 재귀 호출
+            // M5 계산후 strassen 메소드를 호출
             for (i = 0; i < n / 2; i++)
                 for (j = 0; j < n / 2; j++)
                     TempA[i][j] = A[i][j] + A[i][j + n / 2];
@@ -96,7 +97,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
                 for (j = 0; j < n / 2; j++)
                     TempB[i][j] = B[i + n / 2][j + n / 2];
             strassen(n / 2, TempA, TempB, M5);
-            // M6 계산 후 strassen 메소드를 재귀호출
+            // M6 계산 후 strassen 메소드를 호출
             for (i = 0; i < n / 2; i++)
                 for (j = 0; j < n / 2; j++)
                     TempA[i][j] = A[i + n / 2][j] - A[i][j];
@@ -104,7 +105,7 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
                 for (j = 0; j < n / 2; j++)
                     TempB[i][j] = B[i][j] + B[i][j + n / 2];
             strassen(n / 2, TempA, TempB, M6);
-            // M7 계산 후 strassen 메소드를 재귀호출
+            // M7 계산 후 strassen 메소드를 호출
             for (i = 0; i < n / 2; i++)
                 for (j = 0; j < n / 2; j++)
                     TempA[i][j] = A[i][j + n / 2] - A[i + n / 2][j + n / 2];
@@ -130,5 +131,53 @@ public void strassen (int n, int[][] A, int[][] B, int[][] C){
                     C[i + n / 2][j + n / 2] = M1[i][j] + M3[i][j] - M2[i][j] + M6[i][j];
         }
     }```  
+ 
+Strassen 행렬 계산법에 따라 차례대로 계산하였습니다.
+
+```java
+    public static void Strassen_init (int n, int[][] A, int[][] B, int[][] C) {
+        for(int i=0 ; i<n ; i++){
+            for(int j=0 ; j<n ; j++){
+                A[i][j] = (int)(Math.random() * 10+1);       // 행렬 A에 값을 할당
+                B[i][j] = (int)(Math.random() * 10+1);       // 행렬 B에 값을 할당
+                C[i][j] = 0;					                            // 행렬 C에 값을 할당
+            }
+        }
+    }```
     
-   Strassen 행렬 계산법에 따라 차례대로 계산하였습니다.
+행렬 초기화 구문입니다. 원래대로라면 이와같이 A와 B를 Math.random() 함수로 랜덤하게 지정하고 싶었습니다.
+
+```java
+ public static void main(String args[]) {
+        long start = System.currentTimeMillis();
+        Scanner scanner = new Scanner(System.in);
+        Strassen s = new Strassen();
+        int n = 2;
+        int[][] A = new int[n][n];
+        int[][] B = new int[n][n];
+        int[][] C = s.strassen(A,B);
+
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                A[i][j] = scanner.nextInt();
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                B[i][j] = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+               System.out.print(C[i][j]+" ");
+                       System.out.println();
+
+                long end = System.currentTimeMillis();
+
+                System.out.println("수행시간 : "+ (end-start)+ "ms");
+           }
+        }
+    }
+}```
+성능분석을 위해 long start = System.currentTimeMillis(); long end = System.currentTimeMillis(); System.out.println("수행시간 : "+ (end-start)+ "ms"); 을 사용하였습니다.
+
+
+
+원래 목적은 A, B를 랜덤함수로 호출하여 출력하는 것이었는데 코드 오류가 너무 발생하여 Scanner을 이용하여 A, B를 출력하게 되었습니다.
+여전히 코드 오류가 있어 오류가 발생하지만, 정말 많이 노력했습니다...
