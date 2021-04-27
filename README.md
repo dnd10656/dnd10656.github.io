@@ -6,10 +6,10 @@
 ---
 ### Strassen Alogorithm
 
-**아래 A, B 행렬과 두 행의 곱의 결과 C가 있다고 했을 때 (A, B는 정사각행렬)
+`아래 A, B 행렬과 두 행의 곱의 결과 C가 있다고 했을 때 (A, B는 정사각행렬)`
 ![a=](https://wikimedia.org/api/rest_v1/media/math/render/svg/41c6337190684aff7b69f124226d6e62d79ebca5)  
 
-**행렬의 곱은 다음과 같으며, 총 8번의 곱셈과 4번의 덧셈으로 연산한다.  
+`행렬의 곱은 다음과 같으며, 총 8번의 곱셈과 4번의 덧셈으로 연산한다.` 
 ![C11](https://wikimedia.org/api/rest_v1/media/math/render/svg/8d91fa79d27697a5c6551698c1a83a3d5837c57b)  
 ![C12](https://wikimedia.org/api/rest_v1/media/math/render/svg/a08bea24eec9422cda82e6e04af1d96fc6822038)  
 ![C21](https://wikimedia.org/api/rest_v1/media/math/render/svg/7adffe97db091ce8ba231352b3721bbe261985ca)  
